@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios'
+import '../styles/Signin_Signup.css'
 
 const Singup = () => {
   const history = useHistory();
@@ -11,14 +12,14 @@ const Singup = () => {
  
   const uploadFiedls = () => {
 
-    axios.post("http://localhost:8080/register", {
+    fetch("http://localhost:8080/register", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify({
-          nickname,
-          password
+          nickname : nickname,
+          password : password
         }),
       })
         .then((res) => {
@@ -39,37 +40,40 @@ const Singup = () => {
   const PostData = () => {
       uploadFiedls();
   };
-
+        
+          
+             
   return (
-    <div className="card">
-      <div className="card auth-card input-field">
-
-        <input
-          type="text"
-          placeholder="Intruduzca su nombre"
-          value={nickname}
-          onChange={(e) => setnickname(e.target.value)}
-        />
-     
+      <form id="form-signin-signup">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Username</label>
+          <input
+                  type="text"
+                  placeholder="Intruduzca su username"
+                  class="form-control"
+                  value={nickname}
+                  onChange={(e) => setnickname(e.target.value)}
+                />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+                  type="password"
+                  placeholder="Intruduzca su password"
+                  value={password}
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  onChange={(e) => setpassword(e.target.value)}
+                />
+        </div>
+        <div class="mb-3 form-check">
+          <h6 id="H5Register">
+            <Link id="linkRegister" to="/login">Ya te encuentras registrado ?</Link>
+          </h6>
+        </div>
+        <Link id="form-button " type="submit" class="btn btn-primary" onClick={() => PostData()}>Registrar</Link>
+      </form>
     
-        <input
-          type="password"
-          placeholder="Intruduzca su password"
-          value={password}
-          onChange={(e) => setpassword(e.target.value)}
-        />
-        <button
-         id="botonLogin"
-          className="btn waves-effect waves-light #64b5f6 red darken-1"
-          onClick={() => PostData()}
-        >
-          Registrar
-        </button>
-        <h5 id="H5Register">
-          <Link id="linkRegister" to="/login">Ya te encuentras registrado ?</Link>
-        </h5>
-      </div>
-    </div>
   );
   }
 

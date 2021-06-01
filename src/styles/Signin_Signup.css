@@ -1,0 +1,17 @@
+#form-signin-signup {
+    margin: 11% 41% 0% 35%;
+    border: outset;
+}
+.btn-primary {
+    margin-left: 6% !important;
+    margin-top: 10% !important;
+    margin-bottom: 10% !important;
+    padding: 2% 25% 2% 25% !important;
+}
+#H5Register {
+    margin-left: -20px;
+}
+
+.mb-3 {
+    margin: 1rem 2rem 2rem 2rem !important;
+}
