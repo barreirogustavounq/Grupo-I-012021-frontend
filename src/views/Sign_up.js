@@ -9,7 +9,7 @@ const Singup = () => {
   const [password, setpassword] = useState('');
   //const [mail, setmail] = useState('');
 
- 
+
   const uploadFiedls = () => {
 
     fetch("http://localhost:8080/register", {
@@ -29,7 +29,7 @@ const Singup = () => {
           }else{
             console.log("Usuario creado exitosamente")
             };
-            history.push("/login");
+            history.push("/");
           }
         )
         .catch((err) => {
@@ -40,9 +40,9 @@ const Singup = () => {
   const PostData = () => {
       uploadFiedls();
   };
-        
-          
-             
+
+
+
   return (
       <form id="form-signin-signup">
         <div class="mb-3">
@@ -68,12 +68,12 @@ const Singup = () => {
         </div>
         <div class="mb-3 form-check">
           <h6 id="H5Register">
-            <Link id="linkRegister" to="/login">Ya te encuentras registrado ?</Link>
+            <Link id="linkRegister" to="/">Ya te encuentras registrado ?</Link>
           </h6>
         </div>
         <Link id="form-button " type="submit" class="btn btn-primary" onClick={() => PostData()}>Registrar</Link>
       </form>
-    
+
   );
   }
 

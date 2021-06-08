@@ -18,11 +18,12 @@ const Login = () => {
         },
         )
         .then(success =>{
-                localStorage.setItem('tokenValido', success.headers.authorization);
-                //axios.defaults.headers['authorization'] = localStorage.getItem('tokenValido')
-                //console.log("success", success.headers.authorization);
-                history.push("/");
-            }
+                console.log(success.data);
+                localStorage.setItem('apiKey', success.data);
+                history.push("/")
+                window.location.reload();
+                ;
+        }
         )
         .catch(error => {
             console.log(error);
@@ -60,7 +61,7 @@ const Login = () => {
         </div>
         <Link id="form-button " type="submit" class="btn btn-primary" onClick={() => PostData()}>Ingresar</Link>
       </form>
-  ) 
+  )
     };
 
 export default Login;
