@@ -19,8 +19,8 @@ const Login = () => {
         )
         .then(success =>{
                 localStorage.setItem('tokenValido', success.headers.authorization);
-                axios.defaults.headers['authorization'] = localStorage.getItem('tokenValido')
-                console.log("success", success.headers.authorization);
+                //axios.defaults.headers['authorization'] = localStorage.getItem('tokenValido')
+                //console.log("success", success.headers.authorization);
                 history.push("/");
             }
         )
@@ -58,7 +58,7 @@ const Login = () => {
             <Link id="linkRegister" to="/register">Registrarse</Link>
           </h6>
         </div>
-        <button id="form-button " type="submit" class="btn btn-primary" onClick={() => PostData()}>Ingresar</button>
+        <Link id="form-button " type="submit" class="btn btn-primary" onClick={() => PostData()}>Ingresar</Link>
       </form>
   ) 
     };
