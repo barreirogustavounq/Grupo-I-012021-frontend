@@ -1,26 +1,10 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Link, useHistory } from "react-router-dom";
+import i18n from '../i18n'
 import axios from "axios";
 import '../styles/Signin_Signup.css'
 import $ from 'jquery'
 
-
-
-$(document).ready(function(){
-  $(".veen .rgstr-btn button").click(function(){
-    $('.veen .wrapper').addClass('move');
-    $('.body').css('background','#e0b722');
-    $(".veen .login-btn button").removeClass('active');
-    $(this).addClass('active');
-
-  });
-  $(".veen .login-btn button").click(function(){
-    $('.veen .wrapper').removeClass('move');
-    $('.body').css('background','#ff4931');
-    $(".veen .rgstr-btn button").removeClass('active');
-    $(this).addClass('active');
-  });
-});
 
 const Login = () => {
   const history = useHistory();
@@ -29,6 +13,7 @@ const Login = () => {
   const [nicknamereg, setnicknamereg] = useState('');
   const [passwordreg, setpasswordreg] = useState('');
   const [mailreg, setmailreg] = useState('');
+  const [lng, setlng] = useState('es');
 
   const uploadFiedls = () => {
 
@@ -48,7 +33,12 @@ const Login = () => {
             console.log("Datos invalidos o el usuario ya existe")
           }else{
             console.log("Usuario creado exitosamente")
-            
+            $(document).ready(function(){
+              $('.veen .wrapper').removeClass('move');
+              $('.body').css('background','#ff4931');
+              $(".veen .rgstr-btn button").removeClass('active');
+              $(".veen .login-btn button").addClass('active');
+            })
             };
             //history.push("/");
           }
@@ -56,12 +46,10 @@ const Login = () => {
         .catch((err) => {
           console.log(err);
         });
-    }
-  ;
+    };
   const PostDatareg = () => {
       uploadFiedls();
   };
-
   const PostDataLogin = () => {
 
         axios.post("http://localhost:8080/login",
@@ -82,77 +70,107 @@ const Login = () => {
             console.log(error);
 
         });
-    }
+    };
 
+    
+  $(document).ready(function(){
+    $(".veen .rgstr-btn button").click(function(){
+    $('.veen .wrapper').addClass('move');
+    $('.body').css('background','#e0b722');
+    $(".veen .login-btn button").removeClass('active');
+    $(this).addClass('active');
+  });
+    $(".veen .login-btn button").click(function(){
+      $('.veen .wrapper').removeClass('move');
+      $('.body').css('background','#ff4931');
+      $(".veen .rgstr-btn button").removeClass('active');
+      $(this).addClass('active');
+  });
+  
+});
   return (
+    
     <div class="body">
+      <div>
+      <button type="button" class="btn btn-warning"
+        onClick={()=> {i18n.changeLanguage(lng)
+                                    lng === 'es' ? setlng('en') : setlng('es')}} selected>{lng}</button>
+        </div>
 		<div class="veen">
 			<div class="login-btn splits">
-				<p>Already an user?</p>
-				<button class="active">Login</button>
+				<p>{i18n.t('signin')}</p>
+				<button class="active">{i18n.t('login')}</button>
 			</div>
 			<div class="rgstr-btn splits">
-				<p>Don't have an account?</p>
-				<button>Register</button>
+				<p>{i18n.t('signup')} </p>
+				<button>{i18n.t('register')}</button>
 			</div>
 			<div class="wrapper">
 				<form id="login" tabindex="500">
-					<h3>Login</h3>
+					<h3>{i18n.t('login')}</h3>
 					<div class="mail">
 						<input type="text"
-                  placeholder="Intruduzca su username"
+                  placeholder={i18n.t('email')}
                   class="form-control"
                   value={nicknameLog}
                   onChange={(e) => setnicknameLog(e.target.value)}/>
-						<label>Mail or Username</label>
+						<label>{i18n.t('email')}</label>
 					</div>
 					<div class="passwd">
 						<input type="password"
-                  placeholder="Intruduzca su password"
+                  placeholder={i18n.t('password')}
                   value={passwordlog}
                   class="form-control"
                   id="exampleInputPassword1"
                   onChange={(e) => setpasswordlog(e.target.value)}/>
-						<label>Password</label>
+						<label>{i18n.t('password')}</label>
 					</div>
 					<div class="submit">
-          <button onClick={() => PostDataLogin()}>Login</button>
+          <button onClick={(e) => { e.preventDefault()
+                                    PostDataLogin()
+                                  }}>{i18n.t('login')}</button>
 					</div>
 				</form>
-				<form id="register" tabindex="502">
-					<h3>Register</h3>
-					<div class="name">
-						<input type="text" name=""/>
-						<label>Full Name</label>
-					</div>
+				<form class="register" id="register" tabindex="502">
+					<h3>{i18n.t('register')}</h3>
 					<div class="mail">
 						<input type="mail"
-                  placeholder="Intruduzca su mail"
+                  placeholder={i18n.t('email')}
                   value={mailreg}
                   class="form-control"
                   id="exampleInputPassword1"
                   onChange={(e) => setmailreg(e.target.value)}/>
-						<label>Mail</label>
+						<label>{i18n.t('email')}</label>
 					</div>
 					<div class="uid">
 						<input  type="text"
-                  placeholder="Intruduzca su username"
+                  placeholder={i18n.t('username')}
                   class="form-control"
                   value={nicknamereg}
                   onChange={(e) => setnicknamereg(e.target.value)}/>
-						<label>User Name</label>
+						<label>{i18n.t('username')}</label>
 					</div>
 					<div class="passwd">
 						<input type="password"
-                  placeholder="Intruduzca su password"
+                  placeholder={i18n.t('password')}
                   value={passwordreg}
                   class="form-control"
                   id="exampleInputPassword1"
                   onChange={(e) => setpasswordreg(e.target.value)}/>
-						<label>Password</label>
+						<label>{i18n.t('password')}</label>
+					</div>
+          <div class="platform">
+          <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <option selected>{i18n.t('platform')}</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
 					</div>
 					<div class="submit">
-            <button onClick={() => PostDatareg()}>Register</button>
+            <button onClick={(e) => { e.preventDefault()
+                                      PostDatareg()
+                                                }}>{i18n.t('register')}</button>
 					</div>
 				</form>
 			</div>

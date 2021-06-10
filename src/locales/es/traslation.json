@@ -1,0 +1,13 @@
+{
+    "login": "Iniciar sesion",
+    "register": "Registrar",
+    "password": "Contraseña",
+    "email": "Correo electronico",
+    "access": "Ingresar",
+    "signup": "¿No tienes cuenta?",
+    "signin": "¿Ya tienes un cuenta?",
+    "forgot": "¿olvidaste tu clave?",
+    "username": " Nombre de Usuario",
+    "fullname": "Nombre completo",
+    "platform": "Plataforma"
+  }
