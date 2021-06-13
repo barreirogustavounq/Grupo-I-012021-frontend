@@ -7,7 +7,7 @@ import $ from 'jquery'
 
 
 const Login = () => {
-  const [nicknameLog, setnicknameLog] = useState(null);
+  const [mailLog, setmailLog] = useState(null);
   const [passwordlog, setpasswordlog] = useState(null)
   const [nicknamereg, setnicknamereg] = useState(null);
   const [passwordreg, setpasswordreg] = useState(null);
@@ -76,7 +76,7 @@ const Login = () => {
   const PostDataLogin = () => {
     axios.post("http://localhost:8080/login",
       {
-        nickname: nicknameLog,
+        mail: mailLog,
         password: passwordlog
       },
     )
@@ -171,8 +171,8 @@ const Login = () => {
                 <input type="text"
                   placeholder={i18n.t('email')}
                   class="form-control"
-                  value={nicknameLog}
-                  onChange={(e) => setnicknameLog(e.target.value)}
+                  value={mailLog}
+                  onChange={(e) => setmailLog(e.target.value)}
                   required
                 />
                 <label>{i18n.t('email')}</label>
