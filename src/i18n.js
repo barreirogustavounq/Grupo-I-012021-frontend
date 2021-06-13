@@ -5,8 +5,7 @@ import LanguageDetector from "i18next-browser-languagedetector"
 import common_en from "./locales/en/traslation.json"
 import common_es from "./locales/es/traslation.json"
 
-
-i18n.use(LanguageDetector).init({
+i18n.init({
   fallbackLng: "es",
   debug: true,
   interpolation: {

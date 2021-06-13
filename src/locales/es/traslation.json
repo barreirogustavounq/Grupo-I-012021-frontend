@@ -9,5 +9,9 @@
     "forgot": "¿olvidaste tu clave?",
     "username": " Nombre de Usuario",
     "fullname": "Nombre completo",
-    "platform": "Plataforma"
+    "platform": "Plataforma",
+    "welcome":"Bienvenido a",
+    "$":"€",
+    "locale":"25/12/2021",
+    "premiere":"Estreno"
   }

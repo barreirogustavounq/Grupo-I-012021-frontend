@@ -9,5 +9,9 @@
     "forgot": "Forgot your password?",
     "username": " User Name",
     "fullname": "Full Name",
-    "platform": "Platform"
+    "platform": "Platform",
+    "welcome":"Welcome to",
+    "$":"$",
+    "locale":"12/25/2021",
+    "premiere":"Premiere"
   }
