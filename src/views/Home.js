@@ -22,6 +22,7 @@ const Home = () => {
               defaultValue={lng}
               onChange={(e) => {
                 setlng(e.currentTarget.value)
+                i18n.changeLanguage(e.currentTarget.value)
               }}>
               <option value="es">es</option>
               <option value="en">en</option>
@@ -43,9 +44,9 @@ const Home = () => {
 
                 <nav>
                     <ul>
-                        <li><a onClick={()=> {apiKey ? setApikey("") : setApikey(localStorage.getItem("apiKey"))}}>ApiKey</a></li>
-                        <li><a  onClick={()=> {logOut()}}>Loguot</a></li>
-                        <li><Selecti18n/></li>
+                        <li class="listMenu"><a onClick={()=> {apiKey ? setApikey("") : setApikey(localStorage.getItem("apiKey"))}}>ApiKey</a></li>
+                        <li class="listMenu"><a  onClick={()=> {logOut()}}>Loguot</a></li>
+                        <li class="listMenu"><Selecti18n/></li>
                     </ul>
                 </nav>
 
@@ -53,7 +54,7 @@ const Home = () => {
                     <h1>{i18n.t("welcome")} Resenia</h1>
                 </div>
                 <div id= "content">
-                    <h3 id="apiKey">{apiKey? localStorage.getItem('apiKey') : "" }</h3>
+                    <p id="apiKey">{apiKey? "ApiKey: " + localStorage.getItem('apiKey') : "" }</p>
                 </div>
                 <div>
                     <img id="imageBack" alt="backgrond" src={image}/>

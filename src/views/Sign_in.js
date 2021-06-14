@@ -3,17 +3,19 @@ import i18n from '../i18n'
 import axios from "axios";
 import '../styles/Signin_Signup.css'
 import $ from 'jquery'
+import {Modal} from '@material-ui/core'
 
 
 
 const Login = () => {
-  const [mailLog, setmailLog] = useState(null);
+  const [nickname, setnickname] = useState(null);
   const [passwordlog, setpasswordlog] = useState(null)
   const [nicknamereg, setnicknamereg] = useState(null);
   const [passwordreg, setpasswordreg] = useState(null);
   const [mailreg, setmailreg] = useState(null);
   const [lng, setlng] = useState('');
   const [platform, setplatform] = useState('NETFLIX');
+  const [open, setOpen] = useState(false)
 
   const Selecti18n = () => {
     return (
@@ -68,6 +70,7 @@ const Login = () => {
       )
       .catch((err) => {
         console.log(err);
+        //setOpen(true)
       });
   };
   const PostDatareg = () => {
@@ -76,7 +79,7 @@ const Login = () => {
   const PostDataLogin = () => {
     axios.post("http://localhost:8080/login",
       {
-        mail: mailLog,
+        nickname: nickname,
         password: passwordlog
       },
     )
@@ -93,11 +96,9 @@ const Login = () => {
       )
       .catch(error => {
         console.log(error);
-
       });
 
   };
-
   const ValidateEmail = () => {
     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mailreg)) {
       return (true)
@@ -105,7 +106,6 @@ const Login = () => {
     alert("You have entered an invalid email address!")
     return (false)
   }
-
   const validateNick = () => {
     if (nicknamereg && nicknamereg.length > 4) {
       return true
@@ -147,6 +147,7 @@ const Login = () => {
 
   });
   return (
+
     <div>
 
       <div class="body">
@@ -167,15 +168,15 @@ const Login = () => {
             <h5> {i18n.t("$")} 100 - {i18n.t("premiere")} {i18n.t("locale")}</h5>
             <form id="login" tabindex="500">
               <h3>{i18n.t('login')}</h3>
-              <div class="mail">
+              <div class="text">
                 <input type="text"
-                  placeholder={i18n.t('email')}
+                  placeholder={i18n.t('username')}
                   class="form-control"
-                  value={mailLog}
-                  onChange={(e) => setmailLog(e.target.value)}
+                  value={nickname}
+                  onChange={(e) => setnickname(e.target.value)}
                   required
                 />
-                <label>{i18n.t('email')}</label>
+                <label>{i18n.t('username')}</label>
               </div>
               <div class="passwd">
                 <input type="password"
@@ -242,6 +243,7 @@ const Login = () => {
                   if (validateNick() && validatePass() && validatePlatform() && ValidateEmail()) {
                     PostDatareg()
                   }
+                  setOpen(true)
                 }}>{i18n.t('register')}</button>
               </div>
             </form>
@@ -254,7 +256,6 @@ const Login = () => {
       <div>
 
       </div>
-
     </div>
   )
 };

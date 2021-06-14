@@ -108,3 +108,7 @@
             margin-top: 5rem;
             width: 6rem;
   }
+
+  .listMenu {
+    cursor: pointer;
+  }
