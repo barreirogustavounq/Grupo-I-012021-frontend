@@ -33,7 +33,7 @@ const Suscribe = () => {
             });
     }
     const suscribe = (tconst) => {
-        fetch("http://localhost:8080/review/subscribe", {
+        fetch("http://localhost:8080/title/subscribe", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -41,7 +41,7 @@ const Suscribe = () => {
                 'api-key': JSON.stringify(localStorage.getItem("apiKey"))
             }, 
             body: JSON.stringify({
-                reviewId : tconst,
+                tconst : tconst,
                 nick: localStorage.getItem("nickname")
             }),
         })
