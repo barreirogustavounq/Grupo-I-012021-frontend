@@ -9,11 +9,8 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
-<<<<<<< HEAD
-=======
     "i18next": "^20.3.1",
     "i18next-browser-languagedetector": "^6.1.1",
->>>>>>> 4071c9de3e4c63b840ae9ce3fc60b5a1b23c820e
     "jquery": "^3.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
