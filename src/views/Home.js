@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import {Link} from "react-router-dom"
 import '../styles/home.css'
 import image from '../images/background.jpg'
 import i18n from '../i18n'
@@ -9,6 +10,7 @@ const Home = () => {
         i18n.changeLanguage(lng)
       });
 
+     
     const logOut = () => {
         localStorage.removeItem('apiKey');
         window.location.reload();
@@ -46,6 +48,7 @@ const Home = () => {
                     <ul>
                         <li class="listMenu"><a onClick={()=> {apiKey ? setApikey("") : setApikey(localStorage.getItem("apiKey"))}}>ApiKey</a></li>
                         <li class="listMenu"><a  onClick={()=> {logOut()}}>Loguot</a></li>
+                        <li class="listMenu"><Link to="/suscribe">Suscribe</Link></li>
                         <li class="listMenu"><Selecti18n/></li>
                     </ul>
                 </nav>

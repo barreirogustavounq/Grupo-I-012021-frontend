@@ -86,6 +86,7 @@ const Login = () => {
       .then(success => {
         console.log(success.data);
         localStorage.setItem('apiKey', success.data);
+        localStorage.setItem('nickname', nickname);
         $(document).ready(function () {
           $('.veen ').animate({ bottom: '250px' });
           $('.veen ').fadeOut()

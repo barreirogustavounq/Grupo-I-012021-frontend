@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Signin from './views/Sign_in'
 import Home from './views/Home'
 import PageNotFound from './views/PageNotFound'
+import Suscribe from './views/Suscribe';
 
 
 const Routing = () => {
@@ -12,6 +13,9 @@ const Routing = () => {
                 <Switch>
                     <Route exact path="/" component={Home}>
                         <Home/>
+                    </Route>
+                    <Route exact path="/suscribe" component={Suscribe}>
+                        <Suscribe/>
                     </Route>
                 </Switch>
             </div> :
