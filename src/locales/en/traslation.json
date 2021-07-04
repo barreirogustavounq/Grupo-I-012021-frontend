@@ -1,0 +1,17 @@
+{
+    "login": "Login",
+    "register": "Register",
+    "password": "password",
+    "email": "email",
+    "access": "Login ok",
+    "signup": "You do not have an account?",
+    "signin": "Already an user?",
+    "forgot": "Forgot your password?",
+    "username": " User Name",
+    "fullname": "Full Name",
+    "platform": "Platform",
+    "welcome":"Welcome to",
+    "$":"$",
+    "locale":"12/25/2021",
+    "premiere":"Premiere"
+  }
