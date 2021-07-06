@@ -102,6 +102,9 @@ const Login = () => {
       }
       )
       .catch(error => {
+        alert("datos invalidos")
+        setnickname("")
+        setpasswordlog("")
         console.log(error);
       });
 

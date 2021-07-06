@@ -106,7 +106,7 @@ const Suscribe = () => {
                 <button class="btn btn-outline-success" onClick={(e)=>{
                     e.preventDefault()
                     getAllTittles()
-                }} >Search</button>
+                }} >Refresh</button>
                 <input class="form-control" type="url" placeholder="URL to notify subscribe" onChange={(e) => setUrlNotify(e.target.value)} aria-label="Url to notify"/>
                 <button class="btn btn-outline-success" type="submit" onClick={(e) => { notifyUrl() }}>Set</button>
             </form>
