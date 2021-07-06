@@ -9,30 +9,36 @@ const Suscribe = () => {
     const token = JSON.stringify(localStorage.getItem('apiKey'))
 
     const filterResult = () => {
-        setFilteredResult(searchResult.filter(title => title.originalTitle.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())))
+        if(searchResult.length > 0){
+            setFilteredResult(searchResult.filter(title => title.originalTitle.toLocaleLowerCase().includes(searchText.toLocaleLowerCase())))
+        }
     }
 
     useEffect(() => {
+        if(searchResult.length === 0){
+
+            getAllTittles()
+        }    
         filterResult()
     },[searchText]);
 
-    const search = (e) => {
-        e.preventDefault()
+    const getAllTittles= () => {
         fetch(`http://localhost:8080/titles`, {
-            method: "GET",
-            headers: {
-                "Content-type": "application/json",
-                'Access-Control-Allow-Origin': '*',
-                'api-key': token
-            },
-        })
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json",
+                    'Access-Control-Allow-Origin': '*',
+                    'api-key': token
+                },
+            })
             .then((res) => res.json())
-            .then(data => setSearchResult(data))
-            .catch((err) => {
-                console.log("entre en el error")
-                console.log(err);
-            });
+        .then(data => setSearchResult(data))
+        .catch((err) => {
+            console.log("entre en el error")
+            console.log(err);
+        });
     }
+
     const suscribe = (tconst) => {
         fetch("http://localhost:8080/title/subscribe", {
             method: "POST",
@@ -96,16 +102,22 @@ const Suscribe = () => {
     return (
         <div>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" onChange={(e) => setSearchText(e.target.value)} aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit" onClick={(e) => { search(e) }}>Search</button>
-                <input class="form-control me-2" type="url" placeholder="URL to notify subscribe" onChange={(e) => setUrlNotify(e.target.value)} aria-label="Url to notify"/>
+                <input class="form-control" type="search" placeholder="Search" onChange={(e) => setSearchText(e.target.value)} aria-label="Search" />
+                <button class="btn btn-outline-success" onClick={(e)=>{
+                    e.preventDefault()
+                    getAllTittles()
+                }} >Search</button>
+                <input class="form-control" type="url" placeholder="URL to notify subscribe" onChange={(e) => setUrlNotify(e.target.value)} aria-label="Url to notify"/>
                 <button class="btn btn-outline-success" type="submit" onClick={(e) => { notifyUrl() }}>Set</button>
             </form>
+            <div class="container">
+                    <div class="row">
+
             {
                 searchResult.length > 0 ?
-                    filteredResult.map(tittle => {
-                        return (
-                            <div class="col-3">
+                filteredResult.map(tittle => {
+                    return (
+                        <div class="col-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title">{tittle.originalTitle}</h5>
@@ -118,8 +130,10 @@ const Suscribe = () => {
                             </div>)
                     })
                     :
-                    <h1>...</h1>
-            }
+                    <h1> </h1>
+                }
+            </div>
+            </div>
         </div>
     )
 }

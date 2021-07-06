@@ -1,5 +1,8 @@
 .body{
-  background: #ff4931;
+  background-image: url("https://image.freepik.com/foto-gratis/celuloide-camara-video-vintage_23-2148133617.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
   transition: all .5s;
   padding: 1px;
   min-height: 100vh;

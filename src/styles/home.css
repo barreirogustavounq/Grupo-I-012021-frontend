@@ -1,18 +1,27 @@
 
 #body {
-    background: rgb(23, 7, 116);
+    background-image: url("../images/bg1.jpg") !important;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     font-family: Electrolize, sans-serif;
     color: #fff;
     text-align: center;
     font-size: 20px;
     padding-top: 60px;
+    min-height: 100vh;
   }
-  p {line-height: 1.8}
+  p {
+    line-height: 1.8;
+    font-size: initial;
+    text-align: center;
+    word-wrap: break-word;
+  }
   h1 {font-size: 2em;line-height:2}
   #tog {display: none}
   
   #ham {
-    background: rgb(82, 79, 134);
+    background: rgb(5 49 98);
     width: 90px;
     height: 90px;
     border-radius: 50%;
@@ -44,7 +53,7 @@
   #tog:checked ~ #ham span {transform: rotate(-90deg)}
   
   nav {
-    background: rgb(82, 79, 134);
+    background: rgb(5 49 98);
     position: fixed;
     top: 0;
     transform: translateX(-278px);
@@ -112,3 +121,36 @@
   .listMenu {
     cursor: pointer;
   }
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #183d6b4a;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    margin-top: 5rem;
+    margin-left: 1rem;
+    min-width: 23rem;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  margin-right: 20px;
+  margin-bottom: 1rem;
+}
+.col-3 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+  margin-right: 20px;
+  margin-bottom: 1rem;
+}

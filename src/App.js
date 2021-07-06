@@ -14,9 +14,6 @@ const Routing = () => {
                     <Route exact path="/" component={Home}>
                         <Home/>
                     </Route>
-                    <Route exact path="/suscribe" component={Suscribe}>
-                        <Suscribe/>
-                    </Route>
                 </Switch>
             </div> :
             <div>

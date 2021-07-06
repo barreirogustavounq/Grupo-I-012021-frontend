@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from "react-router-dom"
 import '../styles/home.css'
-import image from '../images/background.jpg'
 import i18n from '../i18n'
+import Suscribe from './Suscribe'
 const Home = () => {
     const [apiKey, setApikey] = useState('')
     const [lng, setlng] = useState('');
@@ -48,7 +48,6 @@ const Home = () => {
                     <ul>
                         <li class="listMenu"><a onClick={()=> {apiKey ? setApikey("") : setApikey(localStorage.getItem("apiKey"))}}>ApiKey</a></li>
                         <li class="listMenu"><a  onClick={()=> {logOut()}}>Loguot</a></li>
-                        <li class="listMenu"><Link to="/suscribe">Suscribe</Link></li>
                         <li class="listMenu"><Selecti18n/></li>
                     </ul>
                 </nav>
@@ -59,9 +58,7 @@ const Home = () => {
                 <div id= "content">
                     <p id="apiKey">{apiKey? "ApiKey: " + localStorage.getItem('apiKey') : "" }</p>
                 </div>
-                <div>
-                    <img id="imageBack" alt="backgrond" src={image}/>
-                </div>
+                <Suscribe/>
         </div>
     )
 }

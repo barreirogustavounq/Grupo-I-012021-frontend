@@ -16,6 +16,8 @@ const Login = () => {
   const [lng, setlng] = useState('');
   const [platform, setplatform] = useState('NETFLIX');
   const [open, setOpen] = useState(false)
+  const url2 = "https://image.freepik.com/foto-gratis/celuloide-camara-video-vintage_23-2148133617.jpg";
+  const url1 = "https://image.freepik.com/foto-gratis/composicion-elementos-cine-sobre-fondo-rojo-espacio-copia_23-2148457845.jpg"
 
   const Selecti18n = () => {
     return (
@@ -60,10 +62,14 @@ const Login = () => {
           console.log("Usuario creado exitosamente")
           $(document).ready(function () {
             $('.veen .wrapper').removeClass('move');
-            $('.body').css('background', '#ff4931');
+            $('.body').css('background-image', `url(${url2})`);
             $(".veen .rgstr-btn button").removeClass('active');
             $(".veen .login-btn button").addClass('active');
           })
+          setnicknamereg("")
+          setpasswordreg("")
+          setmailreg("")
+
         };
         //history.push("/");
       }
@@ -135,13 +141,13 @@ const Login = () => {
   $(document).ready(function () {
     $(".veen .rgstr-btn button").click(function () {
       $('.veen .wrapper').addClass('move');
-      $('.body').css('background', '#e0b722');
+      $('.body').css('background-image', `url(${url1})`);
       $(".veen .login-btn button").removeClass('active');
       $(this).addClass('active');
     });
     $(".veen .login-btn button").click(function () {
       $('.veen .wrapper').removeClass('move');
-      $('.body').css('background', '#ff4931');
+      $('.body').css('background-image', `url(${url2})`);
       $(".veen .rgstr-btn button").removeClass('active');
       $(this).addClass('active');
     });
